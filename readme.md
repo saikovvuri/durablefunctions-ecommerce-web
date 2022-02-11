@@ -1,6 +1,4 @@
-# Vanilla JavaScript App
+# Vue.js App on Azure Static Web Apps
 
 
-[Azure Static Web Apps](https://docs.microsoft.com/azure/static-web-apps/overview) allows you to easily build JavaScript apps in minutes. Use this repo with the [quickstart](https://docs.microsoft.com/azure/static-web-apps/getting-started?tabs=vanilla-javascript) to build and customize a new static site.
-
-This repo is used as a starter for a _very basic_ HTML web application using no front-end frameworks.
+This Vue.js app is hosted [Azure Static Web Apps](https://docs.microsoft.com/azure/static-web-apps/overview) and is a simple eCommerce web app where the shopper's activity triggers workflows using Azure Durable Functions
