@@ -1,0 +1,87 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Durable Functions Shop</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+
+<div class="text-center bg-light mb-0">
+    <h1>Order Status</h1>
+</div>
+<div id="app" class="container">
+    <div class="row">
+        <form class="form-inline col-md-12">
+            <label class="sr-only" for="inputOrderNumber">Order Number</label>
+            <input type="text" v-model="orderId" class="form-control" id="inputOrderNumber" placeholder="Order Number">
+            <button type="submit" class="btn btn-primary ml-2" @click="checkStatus">Check</button>
+        </form>
+    </div>
+    <div class="row mt-2" v-if="errorMessage">
+        <div class="alert alert-danger">
+            {{errorMessage}}
+        </div>
+    </div>
+    <div class="row" v-if="orderStatus" >
+        <div class="col-md-6">
+            <order-status :order-status="orderStatus"></order-status>
+        </div>
+    </div>
+</div>
+
+<template id="orderStatusTemplate">
+    <table class="table table-striped mt-2">
+        <tbody>
+            <tr>
+                <td><strong>Products: </strong></td>
+                <td>{{orderStatus.items}}</td>
+            </tr>
+            <tr>
+                <td><strong>Total: </strong></td>
+                <td>{{orderStatus.amount}}</td>
+            </tr>
+            <tr v-if="orderStatus.purchaserEmail">
+                <td><strong>Purchaser Email: </strong></td>
+                <td>{{orderStatus.purchaserEmail}}</td>
+            </tr>
+            <tr>
+                <td><strong>Created Time: </strong></td>
+                <td>{{orderStatus.createdTime | formatDateTime}}</td>
+            </tr>
+            <tr>
+                <td><strong>Last Updated: </strong></td>
+                <td>{{orderStatus.lastUpdatedTime | formatDateTime}}</td>
+            </tr>
+            <tr>
+                <td><strong>Runtime Status: </strong></td>
+                <td>{{orderStatus.runtimeStatus | formatRuntimeStatus}}</td>
+            </tr>
+            <tr v-if="orderStatus.customStatus">
+                <td><strong>Custom Status: </strong></td>
+                <td>{{orderStatus.customStatus}}</td>
+            </tr>
+            <tr v-if="orderStatus.output">
+                <td><strong>Status: </strong></td>
+                <td>{{orderStatus.output.Status}}</td>
+            </tr>
+            <tr v-if="orderStatus.output && orderStatus.output.Downloads">
+                <td><strong>Downloads: </strong></td>
+                <td>
+                    <span v-for="(download,index) in orderStatus.output.Downloads" :key="download">
+                        <a class="btn btn-primary" :href="download">Item {{index + 1}}</a>&nbsp;
+                    </span>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</template>
+
+<script src="scripts/orderStatus.js"></script>
+</body>
+</html>
