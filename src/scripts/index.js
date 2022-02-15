@@ -38,7 +38,7 @@ var app = new Vue({
         ],
         orderId: null,
         cart: [],
-        email: 'durable-funcs-customer@mailinator.com'
+        email: 'sai.kovvuri@gmail.com'
     },
     methods: {
         onOrderCreated: function (orderInfo) {
