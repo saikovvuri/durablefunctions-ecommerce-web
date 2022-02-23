@@ -48,7 +48,7 @@ var app = new Vue({
     methods: {
         getOrderStatuses: function () {
             this.errorMessage = null;
-            fetch('/api/GetOrdersHttpClient?code=wQ5E6oG3rSRgwZcUIuFCa5m42euNc3SXy5jTakM2xjoWjjy7r72JMg==')
+            fetch('/api/GetOrdersHttpClient?code=s0iuQdg03lu06IUiUNVabUlUAsDyjC0Fzux9eu0TWWiN5WaJN1hTkA==')
                 .then(response => response.json())
                 .then(json => {
                     this.orders = json;
@@ -58,7 +58,7 @@ var app = new Vue({
                 });
         },
         approve: function (order, status) {
-            postData(`/api/approve/${order.rowKey}?code=hviGOehv6a6EUGM4ZsZ8AvarSGtkFS9zbEw/ijwDZUHi9QADnnU/hw==`, status)
+            postData(`/api/approve/${order.rowKey}?code=0PGVonv2eSPI9xp2jzsjYWtLVJaOLEwSREPYixqAzNAFkQBAk6gcVA==`, status)
                 .then(_ => order.customStatus = '');
         }
     }
