@@ -60,7 +60,7 @@ var app = new Vue({
             if (event) event.preventDefault();
             this.errorMessage = null;
             this.orderStatus = null;
-            fetch(`/api/orderstatus/${this.orderId}?code=ciE0E0ewkSZSs7Rdp8mUwEgJNQt8ttyGtXoyjMho6qQYDwLzwHd/FA==`)
+            fetch(`/api/orderstatus/${this.orderId}?code=4W5J1ZGmHKcaAO0ZBa92JFuivBEcoKAj9n17Ff9zM1tL1Zvz3k9dJw==`)
                 .then(response => {
                     if (response.status === 404) {
                         this.errorMessage = `Order ${this.orderId} not found`;
